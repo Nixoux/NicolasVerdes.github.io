@@ -1,0 +1,462 @@
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    /* Light mode variables (default) */
+    --background-color-body: #f4f4f4;
+    --background-color-box: white;
+    --text-color: #000;
+    --border-color: #ccc;
+    --textarea-bg: white;
+    --button-bg: #007bff;
+    --button-bg-hover: #0056b3;
+}
+
+[data-theme="dark"] {
+    /* Dark mode variables */
+    --background-color-body: #333;
+    --background-color-box: #222;
+    --text-color: #ddd;
+    --border-color: #555;
+    --textarea-bg: #444;
+    --button-bg: #0056b3;
+    --button-bg-hover: #003f81;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color-body);
+    color: var(--text-color);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--background-color-box);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+
+.box {
+    flex: 1;
+    padding: 20px;
+    margin: 10px;
+    height: 100%;
+    background-color: var(--background-color-box);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    flex-shrink: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    text-align: left; /* Ensure left alignment within the box */
+}
+
+#inputBox {
+    flex: 1.5;
+}
+
+#fileInput{
+    margin-left: -10px;
+    padding: 10px ; /* Restoring the padding as before */
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.content {
+    height: 90%;
+}
+
+#districtBox, #settlementBox {
+    flex: 2;
+}
+
+
+.box .content {
+    overflow-y: auto;
+}
+
+.box.collapsed .content {
+    display: none;
+}
+
+.toggle {
+    margin-top:-20px;
+    margin-left:-20px;
+    margin-bottom: 10px;
+    width: calc(100% + 40px);;
+    background-color: var(--button-bg);
+    color: white;
+    padding: 5px; /* Reduce padding if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.toggle img {
+    filter: invert(100%); /* Inverts the black image to white */
+    height: 20px;         /* Adjust based on your design needs */
+    width: auto;
+}
+
+h1 {
+    font-size: 150%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 130%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#lettersInput {
+    width: 100%;
+    height: 55%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--textarea-bg);
+    color: var(--text-color);
+    resize: none;
+    font-size: 14px;
+}
+
+#XMLInput {
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--textarea-bg);
+    color: var(--text-color);
+    resize: none;
+    font-size: 14px;
+}
+
+/*textarea {
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--textarea-bg);
+    color: var(--text-color);
+    resize: none;
+    font-size: 14px;
+}
+/* General button styles */
+button {
+    padding: 10px 15px; /* Restoring the padding as before */
+    border: none;
+    background-color: var(--button-bg); /* Ensures all buttons have this background except where specified */
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+/* Hover effect for general buttons */
+button:hover {
+    background-color: var(--button-bg-hover);
+}
+
+/* Specific styles for the mode toggle button */
+#modeToggle {
+    padding: 5px; /* Specific padding for this button */
+    background-color: transparent; /* Specific background for this button */
+    transition: transform 0.3s ease; /* Transition for transform scaling */
+}
+
+/* Specific hover effect for the mode toggle button */
+#modeToggle:hover {
+    background-color: transparent; /* Keeps background transparent on hover */
+    transform: scale(1.3); /* Scales up the button */
+}
+
+#modeToggle img {
+    height: 30px;
+    width: 30px;
+}
+
+/* General output styling */
+#outputDistrict,
+#outputSettlement {
+    white-space: pre-wrap;
+    font-size: 14px;
+    text-align: left; /* Ensure output is left-aligned */
+    padding-left: 20px; /* Optional: Add padding to match desired indentation */
+}
+
+
+.district {
+    color: #1f77b4; /* Blue */
+}
+
+.region {
+    color: #ff7f0e; /* Orange */
+}
+
+.country {
+    color: #2ca02c; /* Green */
+}
+
+.bloc {
+    color: #d62728; /* Red */
+}
+
+.district, .region, .country, .bloc {
+    display: inline; /* Ensure all elements are inline */
+}
+
+#outputDistrict span {
+    margin-right: 5px; /* Adds space between each colored part */
+    white-space: nowrap; /* Prevent line breaks within each part */
+}
+
+
+#outputDistrict {
+    line-height: 1.6; /* Optional: adds spacing between different records */
+}
+
+
+
+.collapsed-text {
+    margin-top: auto;
+    padding: 5px; /* Optional padding for collapsed text */
+    text-align: center; /* Optional text alignment */
+    white-space: nowrap;
+    rotate: -90deg;
+    font-size: 150%;
+    font-weight: 800;
+}
+
+
+.collapsible_list {
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
+    margin-top: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.collapsible_list.active,
+.collapsible_list:hover {
+    background-color: var(--button-bg-hover);
+}
+
+.collapsible_content {
+    padding: 10px 18px;
+    display: none;
+    overflow-y: auto;
+    background-color: var(--background-color-box);
+    border-top: 1px solid var(--border-color);
+}
+
+.outputStatus {
+    flex: 1;
+    padding: 10px;
+    border: 3px solid var(--border-color); /* Adds a border around this div */
+    margin-bottom: 10px; /* Adds some space between the two divs */
+    width: 100%;
+    overflow-y: auto;
+}
+
+.outputList {
+    flex: 1; /* Occupies half of the available width */
+    padding: 10px;
+    border: 3px solid var(--border-color); /* Adds a border around this div */
+    width: min-content;
+    overflow-y: auto;
+}
+
+.OutputEntityList {
+    white-space: nowrap;
+}
+
+.outputContainer {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    gap: 10px; /* Space between the DistrictList and infoBox */
+    width: min-content;
+}
+
+.infoBox {
+    display: none; /* Start hidden */
+    background-color: var(--background-color-box);
+    color: var(--text-color);
+    padding: 10px;
+    width: auto; /* Adjust the width to your preference */
+    height: 100%;
+    white-space: nowrap;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.infoBox-header {
+    margin-bottom: 10px;
+}
+
+.infoBox-content {
+    display: flex;
+    justify-content: space-between; /* Create space between the two columns */
+    gap: 20px; /* Add some space between the left and right columns */
+}
+
+.left-column, .right-column {
+    flex: 1; /* Make both columns take up equal width */
+    display: flex;
+    flex-direction: column; /* Stack the items within each column */
+    gap: 10px; /* Space between the items in each column */
+}
+
+.no-mention-box, .potential-matches-box, .matches-select-box, .xml-generation-box {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.no-mention-box {
+    background-color: #f5a6ab; /* Brighter red-pink background */
+    color: #b71c1c; /* Darker red text */
+    border: 2px solid #ef5350; /* Stronger red border */
+}
+
+.potential-matches-box {
+    background-color: #90caf9; /* Brighter blue background */
+    color: #0d47a1; /* Darker blue text */
+    border: 2px solid #42a5f5; /* Stronger blue border */
+}
+
+.matches-select-box {
+    background-color: var(--background-color-box); /* Brighter gray-blue background */
+    color: var(--text-color); /* Darker gray-blue text */
+}
+
+.xml-generation-box {
+    background-color: #cfd8dc; /* Brighter gray-blue background */
+    color: #1c313a; /* Darker gray-blue text */
+    border: 2px solid #90a4ae; /* Stronger gray-blue border */
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Add padding to control indentation */
+}
+
+
+
+
+.dropbtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Ensures the button takes full width of its container */
+    border-radius: 20px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #0056b3;
+    border: #0056b3;
+}
+
+/* Common styles applied to dropdown input fields */
+#myInput,
+#myInputSettlement {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+#myInput:focus,
+#myInputSettlement:focus {
+    outline: 3px solid #ddd;
+}
+
+
+.dropdown {
+    position: relative; /* Changed from relative to position the dropdown content */
+    display: inline-block;
+    width: 100%; /* Ensures dropdown container matches button width */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute; /* Changed to absolute to position relative to .dropdown */
+    background-color: #f6f6f6;
+    width: 100%; /* Ensures dropdown content matches the width of the dropdown */
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+#SettlementList {
+    white-space: nowrap;
+}
+
+.XMLGEN {
+    text-align: left;
+}
+
+.clickable-district:hover {    
+    border: #ffe9bd; /* Border color defined by theme */
+    display: inline-block; /* Ensure element respects border changes */
+    border-radius: 5px;
+    background-color: #ffe9bd;
+}
+
+.clickable-settlement:hover {
+    border: #bfe5fe; /* Border color defined by theme */
+    display: inline-block; /* Ensure element respects border changes */
+    border-radius: 5px;
+    background-color: #bfe5fe;
+}

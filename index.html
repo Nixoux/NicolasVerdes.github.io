@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geographical Information Processor</title>
+    <link rel="icon" type="image/png" href="earth-globe.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Contextual Places XML Tool</h1>
+        <button id="modeToggle" onclick="toggleMode()">
+            <img src="dark-mode.png" alt="Toggle Light/Dark Mode">
+        </button>
+    </header>
+    <div class="container">
+        <div class="box" id="inputBox">
+            <button class="toggle" onclick="toggleBox('inputBox')">
+                <img src="img_collapse.png" alt="Toggle Input">
+            </button>
+            
+            <div class="content">
+                <h2>Upload XML File</h2>
+                <textarea id="XMLInput" placeholder="Paste the XML file here..."></textarea>
+                <br/><br/>
+                <h2>Input Text</h2>
+                <textarea id="lettersInput" placeholder="Paste the letters here..."></textarea>
+                <button onclick="processLetters()">Process</button>
+            </div>
+            <div class="collapsed-text">UPLOAD DATA</div>
+        </div>
+        <div class="box" id="districtBox">
+            <button class="toggle" onclick="toggleBox('districtBox')">
+                <img src="img_collapse.png" alt="Toggle DRCB Info">
+            </button>
+            <div class="content">
+                <h2 class="collapsible_list">D|R|C|B Information</h2>
+                <div class="collapsible_content">
+                    <div class="district"><b><u>District</u></b></div>
+                    <div class="region"><b><u>Region</u></b></div>
+                    <div class="country"><b><u>Country</u></b></div>
+                    <div class="bloc"><b><u>Bloc</u></b></div>
+                    <div id="outputDistrict"></div> 
+                </div>
+                <h2 class="collapsible_list">D|R|C|B Status</h2>
+                <div class="collapsible_content">
+                    <div class="outputStatus" id="outputDistrictStatus"></div>
+                    <div class="outputContainer">
+                        <div class="outputList" id="DistrictList"></div>
+                        <div id="infoBox" class="infoBox"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="collapsed-text">D|R|C|B INFORMATION</div>
+        </div>
+        <div class="box" id="settlementBox">
+            <button class="toggle" onclick="toggleBox('settlementBox')">
+                <img src="img_collapse.png" alt="Toggle Settlement">
+            </button>
+            <div class="content">
+                <h2 class="collapsible_list">Settlement Information</h2>
+                <div class="collapsible_content">
+                    <div id="outputSettlement"></div>
+                </div>
+                <h2 class="collapsible_list">Settlement Status</h2>
+                <div class="collapsible_content">
+                    <div class="outputStatus" id="outputSettlementStatus"></div>
+                    <div class="outputContainer">
+                        <div class="outputList" id="SettlementList"></div>
+                        <div id="infoBoxSettlement" class="infoBox"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="collapsed-text">SETTLEMENT INFORMATION</div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
