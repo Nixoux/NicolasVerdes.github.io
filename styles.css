@@ -280,7 +280,6 @@ button:hover {
 .collapsible_content {
     padding: 10px 18px;
     display: none;
-    overflow-y: auto;
     background-color: var(--background-color-box);
     border-top: 1px solid var(--border-color);
 }
@@ -452,6 +451,7 @@ button:hover {
     display: inline-block; /* Ensure element respects border changes */
     border-radius: 5px;
     background-color: #ffe9bd;
+    color:#000;
 }
 
 .clickable-settlement:hover {
@@ -459,4 +459,5 @@ button:hover {
     display: inline-block; /* Ensure element respects border changes */
     border-radius: 5px;
     background-color: #bfe5fe;
+    color:#000;
 }
